@@ -4,41 +4,41 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'mvn clean package -DskipTests=true'
+        bat 'mvn clean package -DskipTests=true'
         archiveArtifacts 'target/hello-demo-*.jar'
       }
     }
 
     stage('Test') {
       steps {
-        sh 'mvn test'
+        bat 'mvn test'
         junit(testResults: 'target/surefire-reports/TEST-*.xml', keepProperties: true, keepTestNames: true)
       }
     }
     
     stage('Containerization') {
       steps {
-        sh 'echo Docker Build Image..'
-        sh 'echo Docker Tag Image....'
-        sh 'echo Docker Push Image......'
+        bat 'echo Docker Build Image..'
+        bat 'echo Docker Tag Image....'
+        bat 'echo Docker Push Image......'
       }
     }
 
     stage('Kubernetes Deployment') {
       steps {
-        sh 'echo Deploy to Kubernetes using ArgoCD'
+        bat 'echo Deploy to Kubernetes using ArgoCD'
       }
     }
     
     stage('Integration Testing') {
       steps {
-        sh "sleep 10s"
-        sh 'echo Testing using cURL commands......'
+        bat "sleep 10s"
+        bat 'echo Testing using cURL commands......'
       }
     }
   }
   tools {
-    maven 'M398'
+    maven 'Maven_3.9.9'
   }
 
 }
