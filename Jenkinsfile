@@ -32,7 +32,7 @@ pipeline {
     
     stage('Integration Testing') {
       steps {
-        bat "sleep 10s"
+  
         bat 'echo Testing using cURL commands......'
       }
     }
