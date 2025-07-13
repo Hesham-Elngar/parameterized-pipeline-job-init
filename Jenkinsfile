@@ -6,7 +6,7 @@ pipeline {
       steps {
         bat 'mvn clean package -DskipTests=true'
         archiveArtifacts 'target/hello-demo-*.jar'
-        bat """echo sleep time: ${BRANCH_NAME} ,barnch name is: ${BRANCH_NAME} ,run tests: ${RUN_TESTS}"""
+        bat """echo sleep time: ${SLEEP_TIME} ,barnch name is: ${BRANCH_NAME} ,run tests: ${RUN_TESTS}"""
       }
     }
 
